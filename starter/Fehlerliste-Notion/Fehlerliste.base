@@ -1,0 +1,38 @@
+filters:
+  and:
+    - 'file.ext == "md"'
+    - 'file.inFolder("Fehlerliste-Notion/Einträge")'
+properties:
+  note.Fehlerbeschreibung:
+    displayName: Fehler (Beschreibung)
+  note.Fach:
+    displayName: Fach
+  note.Klausur:
+    displayName: Klausur
+  note.Wo Fehler:
+    displayName: Wo fehler
+  note.Status:
+    displayName: status
+  note.Datum:
+    displayName: Datum
+views:
+  - type: table
+    name: Fehlerliste
+    order:
+      - note.Fehlerbeschreibung
+      - note.Fach
+      - note.Klausur
+      - note.Wo Fehler
+      - note.Status
+      - note.Datum
+    sort:
+      - property: note.Datum
+        direction: DESC
+    rowHeight: medium
+    columnSize:
+      note.Fehlerbeschreibung: 500
+      note.Fach: 170
+      note.Klausur: 100
+      note.Wo Fehler: 130
+      note.Status: 110
+      note.Datum: 120
