@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#edf5ff"/><stop offset="1" stop-color="#fbf8ff"/></linearGradient><linearGradient id="glass" x2="0" y2="1"><stop stop-color="#fff" stop-opacity=".94"/><stop offset="1" stop-color="#fff" stop-opacity=".65"/></linearGradient></defs>
+<rect width="1200" height="440" rx="24" fill="url(#bg)"/>
+<g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" fill="#263344">
+<text x="36" y="54" font-size="23" font-weight="650">Fehlerliste</text><text x="1164" y="51" text-anchor="end" fill="#6d788a" font-size="12">Schematische Vorschau · Beispieldaten</text>
+<rect x="28" y="80" width="1144" height="52" rx="17" fill="url(#glass)" stroke="#dce4ef"/>
+<text x="48" y="112" font-size="14">Alle Fehler</text><text x="770" y="112" font-size="13" fill="#69798e">Schnellfilter</text><text x="867" y="112" font-size="13" fill="#69798e">Fächer</text><rect x="961" y="91" width="192" height="30" rx="11" fill="#4c98eb"/><text x="1057" y="111" font-size="13" text-anchor="middle" fill="white">+ Neuer Fehler</text>
+<rect x="28" y="148" width="1144" height="230" rx="14" fill="#fff" fill-opacity=".82" stroke="#e1e7f0"/>
+<g font-size="12" fill="#748195"><text x="48" y="176">Fehler (Beschreibung)</text><text x="520" y="176">Fach</text><text x="700" y="176">Klausur</text><text x="810" y="176">Wo fehler</text><text x="945" y="176">status</text><text x="1060" y="176">Datum</text></g>
+<g stroke="#e9edf3"><path d="M28 191H1172M28 253H1172M28 315H1172"/></g>
+<g font-size="14"><text x="48" y="226">Vorzeichen beim Umformen vergessen</text><text x="48" y="288">Einheiten vor dem Einsetzen umrechnen</text><text x="48" y="350">Randbedingungen genauer prüfen</text></g>
+<g font-size="12"><rect x="508" y="207" width="125" height="26" rx="9" fill="#dceafb" fill-opacity=".8" stroke="#bfd5ef"/><text x="520" y="224" fill="#365d85">Mathematik</text><rect x="508" y="269" width="125" height="26" rx="9" fill="#e2eee8" fill-opacity=".8" stroke="#c8ded2"/><text x="520" y="286" fill="#42715d">Elektrotechnik</text><rect x="508" y="331" width="125" height="26" rx="9" fill="#eae2f3" fill-opacity=".8" stroke="#d9c8ea"/><text x="520" y="348" fill="#75548c">Physik</text>
+<text x="700" y="224" fill="#4c7d65">● NEIN</text><text x="700" y="286" fill="#b55e58">● JA</text><text x="700" y="348" fill="#4c7d65">● NEIN</text>
+<text x="810" y="224">Übung 1</text><text x="810" y="286">Probeklausur</text><text x="810" y="348">Übung 2</text>
+<text x="945" y="224" fill="#a38338">● mid</text><text x="945" y="286" fill="#b55e58">● gravierend</text><text x="945" y="348" fill="#4c7d65">● leicht</text>
+<text x="1060" y="224">24.10.2026</text><text x="1060" y="286">24.10.2026</text><text x="1060" y="348">24.10.2026</text></g>
+<text x="36" y="412" font-size="12" fill="#748195">Markdown-Dateien · LaTeX im Text · Automatisches Datum · PDF-Export</text>
+</g></svg>
