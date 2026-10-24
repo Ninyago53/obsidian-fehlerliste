@@ -1,0 +1,255 @@
+/* Only the error database and its known value chips are styled. */
+.fln-pill.fln-pill {
+  background: var(--fln-bg) !important; color: var(--fln-text) !important;
+  border: none !important; border-radius: 4px; padding: 2px 8px;
+  font-weight: 450; line-height: 1.35;
+}
+.fln-pill.fln-dot { border-radius: 20px; }
+.fln-dot::before { content: ''; display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--fln-dot); margin-right: 5px; flex-shrink: 0; }
+/* Bases uses fixed header geometry: never add vertical padding to all cells. */
+.fln-base .bases-td { box-sizing: border-box; }
+.fln-base .bases-thead .bases-td {
+  padding-top: 0 !important; padding-bottom: 0 !important;
+  align-items: center !important; line-height: normal;
+}
+.fln-base .bases-thead {
+  --bases-table-header-weight: 400;
+  --bases-table-header-color: var(--text-muted);
+}
+.fln-base [data-property="note.Fehlerbeschreibung"] { white-space: normal; }
+.fln-base [data-property="note.Fehlerbeschreibung"] .bases-rendered-value {
+  white-space: normal; overflow-wrap: anywhere; line-height: 1.5;
+}
+.fln-base .bases-thead { color: var(--text-muted); font-weight: 400; }
+.fln-base .bases-tr { border-bottom: 1px solid var(--background-modifier-border); }
+.fln-base .fln-new { background: #2887df; color: white; border-radius: 6px; }
+.fln-form { max-width: 640px; }
+.fln-field { display: grid; grid-template-columns: 150px 1fr auto; gap: 10px;
+  align-items: center; margin-bottom: 16px; }
+.fln-field textarea { min-height: 120px; resize: vertical; }
+.fln-field input, .fln-field textarea, .fln-field select { width: 100%; }
+.fln-field .fln-pill { white-space: nowrap; }
+@media (max-width: 600px) { .fln-field { grid-template-columns: 1fr; } }
+
+/* Suppress property-value autocomplete only while a free-text table cell has focus. */
+body.fln-text-edit .suggestion-container,
+body.fln-text-edit .suggestion-popover { display: none !important; }
+/* Native text is preserved for editing; the preview has no mouse handlers. */
+/* Keep the real editor focusable for keyboard navigation and native edit commands. */
+.fln-base .fln-math-source {
+  display: block !important; position: absolute; opacity: 0;
+  inline-size: 1px; block-size: 1px; overflow: hidden; pointer-events: none;
+}
+.fln-base .fln-math-preview {
+  white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.5;
+  max-width: 100%; overflow-x: auto; pointer-events: none;
+}
+.fln-base .fln-math-preview mjx-container[display="true"] { margin: 0.4em 0; text-align: left; }
+.fln-base .bases-td:focus-within .fln-math-source {
+  display: block !important; position: static; opacity: 1;
+  inline-size: auto; block-size: auto; overflow: visible; pointer-events: auto;
+}
+.fln-base .bases-td:focus-within .fln-math-preview { display: none !important; }
+/* Text editors always exist in Bases. Their presence alone does not mean editing. */
+
+/* Keep formulas in the surrounding sentence; line breaks come only from the text. */
+.fln-base .fln-math-preview mjx-container {
+  display: inline-block; margin: 0 0.1em; vertical-align: middle;
+}
+
+/* Glass surfaces, confined to this database and its own dialogs. */
+.fln-shell, .fln-glass-modal {
+  --fln-glass: color-mix(in srgb, var(--background-primary) 76%, transparent);
+  --fln-edge: color-mix(in srgb, var(--text-normal) 9%, transparent);
+  --fln-highlight: rgba(255,255,255,.72);
+  --fln-shadow: 0 8px 30px rgba(22,40,70,.045);
+  --bases-table-border-color: color-mix(in srgb, var(--text-normal) 7%, transparent);
+  --bases-table-column-border-width: 0px;
+  --bases-table-row-border-width: 1px;
+  --bases-table-header-background: var(--fln-glass);
+  --bases-table-header-background-hover: color-mix(in srgb, var(--interactive-accent) 5%, var(--background-primary));
+  --bases-table-row-background-hover: color-mix(in srgb, var(--interactive-accent) 3%, transparent);
+  --bases-table-header-color: var(--text-muted);
+  --bases-table-header-weight: 450;
+  --bases-table-font-size: var(--font-small);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+}
+.theme-dark .fln-shell, .theme-dark .fln-glass-modal {
+  --fln-highlight: rgba(255,255,255,.12);
+  --fln-shadow: 0 8px 30px rgba(0,0,0,.16);
+}
+.fln-shell {
+  background: radial-gradient(ellipse at 5% 0%, color-mix(in srgb, #c4dfff 18%, transparent), transparent 45%),
+    radial-gradient(ellipse at 95% 0%, color-mix(in srgb, #ded4f9 13%, transparent), transparent 40%),
+    var(--background-primary);
+}
+.fln-shell .bases-header {
+  margin: 12px 14px 10px; padding: 8px 10px;
+  border: 1px solid var(--fln-edge); border-radius: 18px;
+  background: var(--fln-glass); box-shadow: inset 0 1px 0 var(--fln-highlight), var(--fln-shadow);
+  backdrop-filter: blur(20px) saturate(1.25); -webkit-backdrop-filter: blur(20px) saturate(1.25);
+}
+.fln-shell .bases-toolbar { gap: 6px; flex-wrap: nowrap; }
+.fln-shell .bases-toolbar button, .fln-shell .bases-toolbar .text-icon-button {
+  border-radius: 12px; box-shadow: none; font-weight: 450;
+}
+.fln-shell .bases-toolbar .text-icon-button:not(:hover) { background: transparent; }
+.fln-shell .bases-view { padding: 0 14px 14px; }
+.fln-shell .bases-tbody { background: color-mix(in srgb, var(--background-primary) 86%, transparent); }
+.fln-shell .bases-thead {
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+}
+.fln-shell .bases-td { border-inline: 0; }
+.fln-shell .bases-thead .bases-td { font-size: 12px; letter-spacing: .015em; }
+.fln-shell .bases-tr { border-bottom-color: var(--fln-edge); }
+.fln-shell .fln-new, .fln-glass-modal .mod-cta {
+  background: linear-gradient(145deg, color-mix(in srgb, #76bcff 75%, var(--background-primary)), #438ee5);
+  color: #fff; border: 1px solid rgba(255,255,255,.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 3px 9px rgba(55,120,205,.13);
+}
+.fln-shell .fln-manage { background: color-mix(in srgb, var(--background-primary) 60%, transparent); }
+/* Value hues stay recognizable, while their backgrounds become translucent glass. */
+.fln-pill.fln-pill.fln-pill {
+  color: var(--fln-text) !important;
+  background: var(--fln-bg) !important;
+  border: 1px solid color-mix(in srgb, var(--fln-dot) 24%, transparent) !important;
+  border-radius: 10px; padding: 2px 9px; font-size: .94em; font-weight: 450;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.65), 0 2px 6px rgba(25,45,75,.025);
+  backdrop-filter: blur(12px) saturate(1.2); -webkit-backdrop-filter: blur(12px) saturate(1.2);
+}
+.theme-dark .fln-pill.fln-pill.fln-pill {
+  color: color-mix(in srgb, var(--text-normal) 76%, var(--fln-dot)) !important;
+  background: linear-gradient(155deg, color-mix(in srgb, var(--fln-dot) 12%, rgba(255,255,255,.05)),
+    color-mix(in srgb, var(--fln-dot) 24%, transparent)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 2px 6px rgba(0,0,0,.08);
+}
+.fln-pill.fln-dot { border-radius: 20px !important; }
+.fln-dot::before { width: 6px; height: 6px; box-shadow: 0 0 6px color-mix(in srgb, var(--fln-dot) 25%, transparent); }
+.fln-pill .multi-select-pill-remove-button { opacity: .35; }
+.fln-pill:hover .multi-select-pill-remove-button { opacity: .8; }
+.fln-glass-modal {
+  border-radius: 24px; border: 1px solid var(--fln-edge);
+  background: var(--fln-glass); box-shadow: inset 0 1px 0 var(--fln-highlight), 0 24px 80px rgba(20,35,60,.15);
+  backdrop-filter: blur(36px) saturate(1.3); -webkit-backdrop-filter: blur(36px) saturate(1.3);
+}
+.fln-glass-modal h2 { font-size: 24px; font-weight: 600; letter-spacing: -.035em; margin-bottom: 10px; }
+.fln-glass-modal h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin-top: 28px; }
+.fln-glass-modal input, .fln-glass-modal select, .fln-glass-modal textarea {
+  border-radius: 10px; border: 1px solid var(--fln-edge);
+  background: color-mix(in srgb, var(--background-primary) 55%, transparent); box-shadow: inset 0 1px 2px rgba(20,35,60,.025);
+}
+.fln-glass-modal input:focus, .fln-glass-modal textarea:focus, .fln-glass-modal select:focus {
+  border-color: color-mix(in srgb, #438ee5 50%, transparent); box-shadow: 0 0 0 3px rgba(67,142,229,.10);
+}
+.fln-glass-modal button { border-radius: 10px; }
+.fln-caption { color: var(--text-muted); line-height: 1.6; max-width: 48ch; }
+.fln-subject-add { display: flex; gap: 8px; margin: 24px 0; }
+.fln-subject-add input { flex: 1; min-width: 0; }
+.fln-subject-row { display: flex; gap: 16px; align-items: center; justify-content: space-between; min-height: 48px; border-bottom: 1px solid var(--fln-edge); }
+.fln-subject-row button { background: transparent; box-shadow: none; color: var(--text-muted); font-size: 12px; }
+.fln-subject-row button:hover { color: var(--text-normal); background: color-mix(in srgb, var(--text-normal) 4%, transparent); }
+.fln-hidden-subject { display: none !important; }
+@media (prefers-reduced-transparency: reduce) {
+  .fln-shell, .fln-glass-modal { --fln-glass: var(--background-primary); }
+  .fln-glass-modal, .fln-shell .bases-header, .fln-pill.fln-pill.fln-pill { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+
+/* A shared inner edge for toolbar and table; no padding added to the virtual viewport. */
+.fln-shell { min-inline-size: 0; overflow: hidden; }
+.fln-shell .bases-header { box-sizing: border-box; max-inline-size: calc(100% - 28px); }
+.fln-shell .bases-view {
+  padding: 0; margin: 0 14px 14px;
+  inline-size: calc(100% - 28px); max-inline-size: calc(100% - 28px);
+  min-inline-size: 0; box-sizing: border-box; scrollbar-gutter: auto;
+}
+.fln-shell .bases-table { min-width: 0; }
+.fln-shell .bases-toolbar { min-width: 0; }
+
+/* Choice menus (Fach, Klausur, Status) in Notion layout: neutral rows, colored chip, trash on hover. */
+.fln-option-menu .fln-option-header {
+  padding: 8px 12px 4px; font-size: var(--font-ui-smaller); color: var(--text-muted);
+}
+.fln-option-menu .suggestion-item.fln-option {
+  display: flex; align-items: center; gap: 8px; min-height: 32px;
+}
+.fln-option-menu .fln-option-pill { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fln-option-menu .fln-option-trash {
+  margin-left: auto; flex-shrink: 0; padding: 4px; opacity: 0;
+  color: var(--text-faint); background: transparent; box-shadow: none;
+}
+.fln-option-menu .fln-option:hover .fln-option-trash,
+.fln-option-menu .fln-option.is-selected .fln-option-trash,
+.fln-option-menu .fln-option-trash:focus-visible { opacity: 1; }
+.fln-option-menu .fln-option-trash:hover { color: var(--text-error); background: var(--background-modifier-hover); }
+.fln-option-menu .fln-option-trash svg { width: 15px; height: 15px; }
+
+/* Room between the column header and the first entry. */
+.fln-shell .bases-table-container { margin-top: 8px; }
+
+/* Row trash: floats over the space after the last column of the hovered entry. */
+.fln-row-trash {
+  position: fixed; z-index: var(--layer-popover); display: none;
+  width: 28px; height: 28px; padding: 4px; align-items: center; justify-content: center;
+  color: var(--text-faint); background: transparent; box-shadow: none;
+}
+.fln-row-trash.is-visible { display: flex; }
+.fln-row-trash:hover { color: var(--text-error); background: var(--background-modifier-hover); }
+.fln-row-trash svg { width: 16px; height: 16px; }
+
+/* PDF export: the print container stays off screen and is the only thing printed. */
+.fln-shell .fln-pdf { background: color-mix(in srgb, var(--background-primary) 60%, transparent); }
+@media screen {
+  body > .fln-print { position: fixed; left: -100000px; top: 0; width: 720px; }
+}
+.fln-print {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+  color: #1c1c1e; background: #fff;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.fln-print h1 { font-size: 20px; font-weight: 600; letter-spacing: -.02em; margin: 0 0 2px; }
+.fln-print .fln-print-meta { font-size: 11px; color: #6e6e73; margin-bottom: 14px; }
+.fln-print table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 10.5px; line-height: 1.45; }
+.fln-print thead { display: table-header-group; }
+.fln-print th {
+  text-align: left; font-weight: 500; color: #6e6e73;
+  padding: 6px 8px; border-bottom: 1px solid #d2d2d7;
+}
+.fln-print td { padding: 7px 8px; border-bottom: 1px solid #e5e5ea; vertical-align: top; overflow-wrap: anywhere; }
+.fln-print tr { break-inside: avoid; }
+.fln-print .fln-print-group td { font-weight: 600; background: #f5f5f7; }
+.fln-print .fln-print-chip {
+  display: inline-flex; align-items: center; gap: 4px; margin: 0 3px 3px 0;
+  padding: 1px 7px; border-radius: 999px; max-width: 100%; box-sizing: border-box; background: #ececee;
+}
+.fln-print .fln-print-dot { width: 6px; height: 6px; border-radius: 50%; }
+.fln-print mjx-container { display: inline-block; margin: 0 .1em; vertical-align: middle; }
+
+/* Quick filter button: tinted while a filter is active. */
+.fln-shell .fln-filter { background: color-mix(in srgb, var(--background-primary) 60%, transparent); }
+.fln-shell .fln-filter.is-active {
+  background: color-mix(in srgb, var(--interactive-accent) 14%, transparent);
+  color: var(--interactive-accent);
+}
+
+/* Toolbar stays on one line: plugin buttons are icon + label and collapse step by step. */
+.fln-shell .bases-toolbar > * { flex-shrink: 0; }
+.fln-shell .bases-toolbar .bases-toolbar-result-count { flex-shrink: 1; min-width: 0; }
+.fln-shell .fln-tool {
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  height: 30px; padding: 0 10px;
+}
+.fln-shell .fln-tool-icon { display: flex; }
+.fln-shell .fln-tool-icon svg { width: 16px; height: 16px; }
+@container bases-header (width < 1250px) {
+  .fln-shell .fln-tool:not(.fln-new) .fln-tool-label { display: none; }
+  .fln-shell .fln-tool:not(.fln-new) { padding: 0 8px; }
+  .fln-shell .fln-filter:not([data-count=""])::after { content: attr(data-count); font-size: 11px; font-weight: 600; }
+}
+@container bases-header (width < 1050px) {
+  .fln-shell .bases-header .bases-toolbar-item:not(.bases-toolbar-result-count) { --bases-toolbar-label-display: none; }
+}
+@container bases-header (width < 700px) {
+  .fln-shell .fln-new .fln-tool-label { display: none; }
+  .fln-shell .fln-new { padding: 0 8px; }
+}

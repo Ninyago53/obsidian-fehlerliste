@@ -1,0 +1,9 @@
+dist/
+node_modules/
+.DS_Store
+__pycache__/
+*.pyc
+# Nie persönliche Vaults oder Einstellungen einchecken:
+.obsidian/
+data.json
+*.pdf

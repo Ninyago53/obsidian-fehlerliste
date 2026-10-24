@@ -1,0 +1,10 @@
+{
+  "id": "fehlerliste-notion-farben",
+  "name": "Fehlerliste",
+  "version": "1.5.0",
+  "minAppVersion": "1.14.4",
+  "description": "Verwalte Lernfehler in einer farbigen Tabelle mit Fächern, LaTeX, Filtern und PDF-Export.",
+  "author": "Ninyago53",
+  "authorUrl": "https://github.com/Ninyago53",
+  "isDesktopOnly": true
+}
