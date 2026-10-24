@@ -1,0 +1,31 @@
+name: Release
+on:
+  push:
+    tags: ['*.*.*']
+permissions:
+  contents: read
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check tag and manifest version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: node -e 'if (process.env.RELEASE_TAG !== require("./manifest.json").version) process.exit(1)'
+      - run: npm test
+      - run: npm run build
+      - name: Publish downloads
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: >-
+          gh release create "$RELEASE_TAG"
+          dist/main.js dist/manifest.json dist/styles.css
+          dist/Fehlerliste-Plugin.zip dist/Fehlerliste-Starter-Vault.zip dist/SHA256SUMS.txt
+          --title "Fehlerliste $RELEASE_TAG" --generate-notes
